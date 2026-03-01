@@ -9,10 +9,10 @@ class Person:
 
 def create_person_list(people: list) -> list:
     Person.people.clear()
-    result = []
-    for person_dict in people:
-        person = Person(person_dict["name"], person_dict["age"])
-        result.append(person)
+    result = [
+        Person(person_dict["name"], person_dict["age"])
+        for person_dict in people
+    ]
     for i, person_dict in enumerate(people):
         if person_dict.get("wife") is not None:
             result[i].wife = Person.people[person_dict["wife"]]
